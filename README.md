@@ -59,3 +59,39 @@ project-root/
 ├── tsconfig.json
 ├── package.json
 ```
+
+
+
+---
+
+## 🧠 SOLID Principles Breakdown (Where They Are Used)
+
+| Principle | Where It’s Applied | Purpose |
+|----------|--------------------|---------|
+| **S**ingle Responsibility | `services/`, `controllers/`, `middlewares/` | Each module does one job only |
+| **O**pen/Closed | `PDFService`, `EmailService` | Easily add new logic without modifying existing |
+| **L**iskov Substitution | Service interfaces (e.g. `IPDFReportService`) | Can replace with mocks or other services |
+| **I**nterface Segregation | `IPDFReportService`, `IUserService` | Small, focused contracts |
+| **D**ependency Inversion | Controllers depend on interfaces, not models | Flexible, testable architecture |
+
+┌──────────────────────────────┐
+│         CONTROLLERS          │  <-- Presentation Layer
+│ Handles req/res only         │
+└────────────┬─────────────────┘
+             │
+┌────────────▼─────────────────┐
+│          SERVICES            │  <-- Business Logic (SRP, DIP)
+│ Each handles one responsibility
+└────────────┬─────────────────┘
+             │
+┌────────────▼─────────────────┐
+│          INTERFACES          │  <-- Abstractions (ISP, DIP)
+│ Defines contracts between layers
+└────────────┬─────────────────┘
+             │
+┌────────────▼─────────────────┐
+│         IMPLEMENTATIONS      │  <-- OCP, LSP
+│ Mongoose Models, PDF Kit     │
+└──────────────────────────────┘
+
+```

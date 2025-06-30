@@ -4,6 +4,7 @@ import { IEmailService } from '../interfaces/IEmailService';
 import { IPDFReportService } from '../interfaces/IPDFReportService';
 import fs from 'fs';
 
+
 export class UserController {
   constructor(
     private userService: IUserService,
@@ -11,6 +12,7 @@ export class UserController {
     private pdfService: IPDFReportService
   ) {}
 
+  // ✅ SRP: This controller ONLY handles HTTP request/response logic
   register = async (req: Request, res: Response) => {
     const user = await this.userService.register(req.body);
     await this.emailService.send(user.email, 'Welcome!', 'Thanks for joining.');

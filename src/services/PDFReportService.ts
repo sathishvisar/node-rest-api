@@ -5,6 +5,8 @@ import { pdfQueue } from '../queues/pdfQueue';
 import { redisConnection } from '../queues/redisConfig';
 
 
+// ✅ SRP: Responsible ONLY for PDF generation
+// ✅ OCP: Easily replace this with another PDF library without touching controller
 export class PDFReportService implements IPDFReportService {
   async generateReport(content: string): Promise<string>{
     // const filePath = generateNewPdf(content);
