@@ -29,7 +29,6 @@ A scalable, modular Node.js backend application using **Express**, **MongoDB**, 
 - **worker_threads** (PDF jobs)
 - **PDFKit** (PDF generation)
 - **dotenv** (config management)
-- **ESLint** + **Prettier** (Code style)
 
 ---
 
@@ -42,9 +41,11 @@ project-root/
 │   ├── index.ts
 │   ├── app.ts
 │   ├── confifg/
+│   │   └── database.ts
 │   ├── controllers/
 │   ├── queues/                 🔄 BullMQ job queues
-│   │   └── pdfQueue.ts
+│   │   ├── pdfQueue.ts
+│   │   └── redisConfig.ts
 │   ├── workers/                🧵 Worker threads and Bull workers
 │   │   ├── pdfWorker.ts
 │   │   └── thread/pdfThread.ts
